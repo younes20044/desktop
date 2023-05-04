@@ -140,11 +140,11 @@ button{
         <div class="shape"></div>
     </div>
     <form action="{{ route('login.action') }}" method="POST">
-       
+    <input type="hidden" name="_token" value="{{ csrf_token() }}">
         <h3>Login Here</h3>
 
         <label for="username">Username</label>
-        <input type="text"  name="username" placeholder="Email or Phone" id="username">
+        <input type="text"  name="email" placeholder="Email or Phone" id="username">
 
         <label for="password">Password</label>
         <input type="password" placeholder="Password" name="password" id="password">

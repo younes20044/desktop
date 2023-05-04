@@ -10,20 +10,28 @@
         <form action="{{ route('register.action') }}" method="POST">
             @csrf
             <div class="mb-3">
-                <label>Name <span class="text-danger">*</span></label>
-                <input class="form-control" type="text" name="name" value="{{ old('name') }}" />
+                <label>nom <span class="text-danger">*</span></label>
+                <input class="form-control" type="text" name="nom" />
             </div>
             <div class="mb-3">
-                <label>Username <span class="text-danger">*</span></label>
-                <input class="form-control" type="username" name="username" value="{{ old('username') }}" />
+                <label>prenom <span class="text-danger">*</span></label>
+                <input class="form-control" type="text" name="prenom" />
+            </div>
+            <div class="mb-3">
+                <label>portable <span class="text-danger">*</span></label>
+                <input class="form-control" type="username" name="portable"  />
+            </div>
+            <div class="mb-3">
+                <label>role <span class="text-danger">*</span></label>
+                <input class="form-control" type="text" name="role" />
+            </div>
+            <div class="mb-3">
+                <label>email <span class="text-danger">*</span></label>
+                <input class="form-control" type="text" name="email" />
             </div>
             <div class="mb-3">
                 <label>Password <span class="text-danger">*</span></label>
                 <input class="form-control" type="password" name="password" />
-            </div>
-            <div class="mb-3">
-                <label>Password Confirmation<span class="text-danger">*</span></label>
-                <input class="form-control" type="password" name="password_confirm" />
             </div>
             <div class="mb-3">
                 <button class="btn btn-primary">Register</button>

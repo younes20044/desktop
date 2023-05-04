@@ -18,20 +18,25 @@ class UserController extends Controller
     public function register_action(Request $request)
     {
         $request->validate([
-            'name' => 'required',
-            'username' => 'required|unique:tb_user',
-            'password' => 'required',
-            'password_confirm' => 'required|same:password',
+            'nom' => 'required',
+            'prenom' => 'required|unique:tb_user',
+            'portable' => 'required',
+            'role' => 'required',
+            'email' => 'required',
+            'password' => 'required'
         ]);
 
         $user = new User([
-            'name' => $request->name,
-            'username' => $request->username,
-            'password' => Hash::make($request->password),
+            'nom' => $request->nom,
+            'prenom' => $request->prenom,
+            'portable' => $request->portable,
+            'role' => $request->role,
+            'email' => $request->email,
+            'password' => Hash::make($request->password)
         ]);
         $user->save();
 
-        return redirect()->route('login')->with('success', 'Registration success. Please login!');
+        return redirect()->route('login');
     }
 
 
@@ -44,12 +49,14 @@ class UserController extends Controller
     public function login_action(Request $request)
     {
         $request->validate([
-            'username' => 'required',
+            'email' => 'required',
             'password' => 'required',
         ]);
-        if (Auth::attempt(['username' => $request->username, 'password' => $request->password])) {
+        if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
+            $username = Auth::user()->prenom." ".Auth::user()->nom;
             $request->session()->regenerate();
-            return redirect()->intended('/');
+            $username=strtoupper($username);
+            return view('welcome')->with('username', $username);
         }
 
         return back()->withErrors([
