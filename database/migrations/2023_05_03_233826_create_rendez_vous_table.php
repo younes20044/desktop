@@ -15,6 +15,8 @@ return new class extends Migration
     {
         Schema::create('rendez_vous', function (Blueprint $table) {
             $table->id();
+            
+            $table->string('type_de_rdv');
             $table->string('nom_client');
             $table->string('prenom_client');
             $table->string('adress_client');
@@ -30,8 +32,8 @@ return new class extends Migration
             $table->integer('REFERENCE_DE_LA_VIS');
             $table->string('precataire');
             $table->string('commentaire');
-            $table->string('statut');
-            $table->string('confimateur');
+            $table->string('statut')->nullable();
+            $table->string('confimateur')->nullable();
             $table->string('id_agent');
             
             

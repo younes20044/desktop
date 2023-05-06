@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\FormController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,4 +31,6 @@ Route::get('d', [DashboardController::class, 'dashboard'])->name('dashboard');
 Route::get('welcome', function () {
     return view('welcome');
 });
+Route::get('form', [FormController::class, 'form'])->name('form');
+Route::post('add_rendez_vous', [FormController::class, 'add_rendez_vous'])->name('add_rendez_vous');
 
